@@ -27,6 +27,7 @@ public class Ride {
     private PaymentMethod paymentMethod;
     @Enumerated(EnumType.STRING)
     private RideStatus rideRequestStatus;
+    private String otp;
     private Double fare;
     private LocalDateTime startedAt;
     private LocalDateTime endedAt;
