@@ -5,6 +5,8 @@ import com.clone.uber.dto.RideDto;
 import com.clone.uber.dto.RideRequestDto;
 import com.clone.uber.dto.RiderDto;
 import com.clone.uber.entity.RideRequest;
+import com.clone.uber.entity.Rider;
+import com.clone.uber.entity.User;
 
 import java.util.List;
 
@@ -14,4 +16,5 @@ public interface RiderService {
     DriverDto rateDriver(Long rideId, Integer rating);
     RiderDto getMyProfile();
     List<RideDto> getAllMyRides();
+    Rider createNewRider(User user);
 }
