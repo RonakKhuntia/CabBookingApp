@@ -14,7 +14,7 @@ public class RideFareDefaultFareCalculationStrategy implements RideFareCalculati
     private final DistanceService distanceService;
 
     @Override
-    public double calculateFate(RideRequest rideRequest) {
+    public double calculateFare(RideRequest rideRequest) {
         double distance = distanceService.calculateDistance(rideRequest.getPickupLocation(),rideRequest.getDropOffLocation());
         return distance*RIDE_FARE_MULTIPLIER;
     }

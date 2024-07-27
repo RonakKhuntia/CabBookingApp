@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class RideFareSurgePricingFareCalculationStrategy implements RideFareCalculationStrategy {
     @Override
-    public double calculateFate(RideRequest rideRequest) {
+    public double calculateFare(RideRequest rideRequest) {
         return 0;
     }
 }
