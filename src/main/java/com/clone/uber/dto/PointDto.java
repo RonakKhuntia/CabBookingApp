@@ -10,6 +10,7 @@ public class PointDto {
     private double[] coordinates;
     private String type = "Point";
 
+    //PointDto
     public PointDto(double[] coordinates) {
         this.coordinates = coordinates;
     }
