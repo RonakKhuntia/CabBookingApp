@@ -1,7 +1,7 @@
 package com.clone.uber.advice;
 
-import com.codingshuttle.project.uber.uberApp.exceptions.ResourceNotFoundException;
-import com.codingshuttle.project.uber.uberApp.exceptions.RuntimeConflictException;
+import com.clone.uber.exception.ResourceNotFoundException;
+import com.clone.uber.exception.RuntimeConflictException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
