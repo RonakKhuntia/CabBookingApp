@@ -31,6 +31,7 @@ public class RiderServiceImpl implements RiderService {
     private final RideRequestRepository rideRequestRepository;
     private final RiderRepository riderRepository;
 
+    //request ride service impl
     @Override
     public RideRequestDto requestRide(RideRequestDto rideRequestDto) {
         RideRequest rideRequest = modelMapper.map(rideRequestDto,RideRequest.class);
