@@ -16,5 +16,7 @@ public interface RiderService {
     DriverDto rateDriver(Long rideId, Integer rating);
     RiderDto getMyProfile();
     List<RideDto> getAllMyRides();
+
+    //create new rider
     Rider createNewRider(User user);
 }
