@@ -12,6 +12,7 @@ public class ApiResponse<T> {
     private T data;
     private ApiError error;
 
+    //Api Response
     public ApiResponse() {
         this.timeStamp = LocalDateTime.now();
     }
