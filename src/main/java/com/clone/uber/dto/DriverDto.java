@@ -10,6 +10,9 @@ import org.locationtech.jts.geom.Point;
 @AllArgsConstructor
 public class DriverDto {
 
+    private Long id;
     private UserDto user;
     private Double rating;
+    private Boolean available;
+    private String vehicleId;
 }
