@@ -10,10 +10,7 @@ import com.clone.uber.entity.enums.RideRequestStatus;
 import com.clone.uber.entity.enums.RideStatus;
 import com.clone.uber.exception.ResourceNotFoundException;
 import com.clone.uber.repository.DriverRepository;
-import com.clone.uber.service.DriverService;
-import com.clone.uber.service.PaymentService;
-import com.clone.uber.service.RideRequestService;
-import com.clone.uber.service.RideService;
+import com.clone.uber.service.*;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
@@ -33,6 +30,7 @@ public class DriverServiceImpl implements DriverService {
     private final RideService rideService;
     private final ModelMapper modelMapper;
     private final PaymentService paymentService;
+    private final RatingService ratingService;
 
     @Override
     @Transactional
@@ -123,7 +121,18 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public RiderDto rateRider(Long rideId, Integer rating) {
-        return null;
+        Ride ride = rideService.getRideById(rideId);
+        Driver driver = getCurrentDriver();
+
+        if(!driver.equals(ride.getDriver())) {
+            throw new RuntimeException("Driver is not the owner of this Ride");
+        }
+
+        if(!ride.getRideStatus().equals(RideStatus.ENDED)) {
+            throw new RuntimeException("Ride status is not Ended hence cannot start rating, status: "+ride.getRideStatus());
+        }
+
+        return ratingService.rateRider(ride, rating);
     }
 
     @Override
