@@ -6,7 +6,11 @@ import com.clone.uber.dto.UserDto;
 
 public interface AuthService {
 
-    String login(String email, String password);
-    UserDto signup(SignUpDto signUpDto);
+    String[] login(String email, String password);
+
+    UserDto signup(SignUpDto signupDto);
+
     DriverDto onboardNewDriver(Long userId, String vehicleId);
+
+    String refreshToken(String refreshToken);
 }
