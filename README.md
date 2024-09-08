@@ -57,6 +57,6 @@ The application features:
 
 You can find detailed API documentation with examples in the `src/main/resources/swagger/swagger.yaml` file.
 
-### Contributing
+### Contributions
 
 Contributions are welcome! Please open an issue or pull request for any bug fixes, feature additions, or improvements.
