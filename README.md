@@ -53,10 +53,6 @@ The application features:
     * **Payments:**
         * `/payments/process` - Process payments for completed rides
 
-### API Documentation
-
-You can find detailed API documentation with examples in the `src/main/resources/swagger/swagger.yaml` file.
-
 ### Contributions
 
 Contributions are welcome! Please open an issue or pull request for any bug fixes, feature additions, or improvements.
