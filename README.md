@@ -18,15 +18,15 @@ The application features:
 ### Installation
 
 1. **Prerequisites:**
-    * Java Development Kit (JDK) 21 
+    * Java Development Kit (JDK) 22 
     * Maven 3.6.3 or higher
 2. **Clone the repository:**
     ```bash
-    git clone https://github.com/your-username/uber-clone.git
+    git clone https://github.com/RonakKhuntia/CabBookingApp
     ```
 3. **Navigate to the project directory:**
     ```bash
-    cd uber-clone
+    cd CabBookingApp
     ```
 4. **Build the project:**
     ```bash
