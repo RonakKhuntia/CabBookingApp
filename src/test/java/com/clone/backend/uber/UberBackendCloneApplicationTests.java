@@ -1,10 +1,10 @@
-package com.clone.uber;
+package com.clone.backend.uber;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class UberCloneApplicationTests {
+class UberBackendCloneApplicationTests {
 
 	@Test
 	void contextLoads() {

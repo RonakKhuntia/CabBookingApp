@@ -1,13 +1,13 @@
-package com.clone.uber;
+package com.clone.backend.uber;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class UberCloneApplication {
+public class UberBackendCloneApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(UberCloneApplication.class, args);
+		SpringApplication.run(UberBackendCloneApplication.class, args);
 	}
 
 }
