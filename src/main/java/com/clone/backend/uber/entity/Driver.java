@@ -13,6 +13,7 @@ public class Driver {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Double rating;
+    private String vehicleId;
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
