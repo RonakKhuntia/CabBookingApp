@@ -5,8 +5,11 @@ import com.clone.backend.uber.dto.RideDto;
 import com.clone.backend.uber.dto.RideRequestDto;
 import com.clone.backend.uber.dto.RiderDto;
 import com.clone.backend.uber.entity.RideRequest;
+import com.clone.backend.uber.entity.Rider;
+import com.clone.backend.uber.entity.User;
 import com.clone.backend.uber.enums.RideRequestStatus;
 import com.clone.backend.uber.repository.RideRequestRepository;
+import com.clone.backend.uber.repository.RiderRepository;
 import com.clone.backend.uber.service.RiderService;
 import com.clone.backend.uber.strategy.DriverMatchingStrategy;
 import com.clone.backend.uber.strategy.RideFareCalculationStrategy;
@@ -25,6 +28,7 @@ public class RiderServiceImpl implements RiderService {
     private final RideFareCalculationStrategy rideFareCalculationStrategy;
     private final DriverMatchingStrategy driverMatchingStrategy;
     private final RideRequestRepository rideRequestRepository;
+    private final RiderRepository riderRepository;
 
     @Override
     public RideRequestDto requestRide(RideRequestDto rideRequestDto) {
@@ -55,5 +59,15 @@ public class RiderServiceImpl implements RiderService {
     @Override
     public List<RideDto> getMyRides() {
         return List.of();
+    }
+
+    @Override
+    public Rider createNewRider(User user) {
+        Rider rider = Rider
+                .builder()
+                .user(user)
+                .rating(0.0)
+                .build();
+        return riderRepository.save(rider);
     }
 }
