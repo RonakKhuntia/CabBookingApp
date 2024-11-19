@@ -1,6 +1,5 @@
 package com.clone.backend.uber.advice;
 
-
 import com.clone.backend.uber.exception.ResourceNotFoundException;
 import com.clone.backend.uber.exception.RuntimeConflictException;
 import org.springframework.http.HttpStatus;

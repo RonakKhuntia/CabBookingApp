@@ -6,6 +6,8 @@ import com.clone.backend.uber.dto.UserDto;
 
 public interface AuthService {
     String login(String email, String password);
+
     UserDto signup(SignupDto signupDto);
+
     DriverDto onboardNewDriver(Long userId);
 }

@@ -1,6 +1,5 @@
 package com.clone.backend.uber.strategy.impl;
 
-import com.clone.backend.uber.dto.RideRequestDto;
 import com.clone.backend.uber.entity.RideRequest;
 import com.clone.backend.uber.service.DistanceService;
 import com.clone.backend.uber.strategy.RideFareCalculationStrategy;
