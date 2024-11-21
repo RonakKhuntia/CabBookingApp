@@ -1,6 +1,6 @@
 package com.clone.backend.uber.utils;
 
-import com.clone.backend.uber.dto.PointDto;
+import com.clone.backend.uber.model.PointDto;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.Point;

@@ -1,7 +1,7 @@
 package com.clone.backend.uber.controller;
 
-import com.clone.backend.uber.dto.SignupDto;
-import com.clone.backend.uber.dto.UserDto;
+import com.clone.backend.uber.model.SignupDto;
+import com.clone.backend.uber.model.UserDto;
 import com.clone.backend.uber.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;

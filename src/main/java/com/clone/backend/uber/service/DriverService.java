@@ -1,8 +1,8 @@
 package com.clone.backend.uber.service;
 
-import com.clone.backend.uber.dto.DriverDto;
-import com.clone.backend.uber.dto.RideDto;
-import com.clone.backend.uber.dto.RiderDto;
+import com.clone.backend.uber.model.DriverDto;
+import com.clone.backend.uber.model.RideDto;
+import com.clone.backend.uber.model.RiderDto;
 
 import java.util.List;
 

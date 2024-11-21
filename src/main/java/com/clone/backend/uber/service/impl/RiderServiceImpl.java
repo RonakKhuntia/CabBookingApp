@@ -1,9 +1,9 @@
 package com.clone.backend.uber.service.impl;
 
-import com.clone.backend.uber.dto.DriverDto;
-import com.clone.backend.uber.dto.RideDto;
-import com.clone.backend.uber.dto.RideRequestDto;
-import com.clone.backend.uber.dto.RiderDto;
+import com.clone.backend.uber.model.DriverDto;
+import com.clone.backend.uber.model.RideDto;
+import com.clone.backend.uber.model.RideRequestDto;
+import com.clone.backend.uber.model.RiderDto;
 import com.clone.backend.uber.entity.RideRequest;
 import com.clone.backend.uber.entity.Rider;
 import com.clone.backend.uber.entity.User;

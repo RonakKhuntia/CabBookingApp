@@ -1,6 +1,6 @@
 package com.clone.backend.uber.service;
 
-import com.clone.backend.uber.dto.RideRequestDto;
+import com.clone.backend.uber.model.RideRequestDto;
 import com.clone.backend.uber.entity.Driver;
 import com.clone.backend.uber.entity.Ride;
 import com.clone.backend.uber.enums.RideStatus;
