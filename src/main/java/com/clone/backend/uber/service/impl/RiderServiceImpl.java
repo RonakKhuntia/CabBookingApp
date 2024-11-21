@@ -75,6 +75,7 @@ public class RiderServiceImpl implements RiderService {
         return riderRepository.save(rider);
     }
 
+    @Override
     public Rider getCurrentRider() {
         // TODO : implement Spring security
         return riderRepository.findById(1L).orElseThrow(() -> new ResourceNotFoundException(
