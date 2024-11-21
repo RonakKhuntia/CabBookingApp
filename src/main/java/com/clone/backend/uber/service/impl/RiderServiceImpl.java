@@ -1,5 +1,7 @@
 package com.clone.backend.uber.service.impl;
 
+import com.clone.backend.uber.entity.Driver;
+import com.clone.backend.uber.exception.ResourceNotFoundException;
 import com.clone.backend.uber.model.DriverDto;
 import com.clone.backend.uber.model.RideDto;
 import com.clone.backend.uber.model.RideRequestDto;
@@ -11,8 +13,7 @@ import com.clone.backend.uber.enums.RideRequestStatus;
 import com.clone.backend.uber.repository.RideRequestRepository;
 import com.clone.backend.uber.repository.RiderRepository;
 import com.clone.backend.uber.service.RiderService;
-import com.clone.backend.uber.strategy.DriverMatchingStrategy;
-import com.clone.backend.uber.strategy.RideFareCalculationStrategy;
+import com.clone.backend.uber.strategy.RideStrategyManager;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -24,19 +25,21 @@ import java.util.List;
 public class RiderServiceImpl implements RiderService {
 
     private final ModelMapper modelMapper;
-    private final RideFareCalculationStrategy rideFareCalculationStrategy;
-    private final DriverMatchingStrategy driverMatchingStrategy;
+    private final RideStrategyManager rideStrategyManager;
     private final RideRequestRepository rideRequestRepository;
     private final RiderRepository riderRepository;
 
     @Override
     public RideRequestDto requestRide(RideRequestDto rideRequestDto) {
+        Rider rider = getCurrentRider();
         RideRequest rideRequest = modelMapper.map(rideRequestDto, RideRequest.class);
         rideRequest.setRideRequestStatus(RideRequestStatus.PENDING);
-        Double fare = rideFareCalculationStrategy.calculateFare(rideRequest);
+        rideRequest.setRider(rider);
+        Double fare = rideStrategyManager.rideFareCalculationStrategy().calculateFare(rideRequest);
         rideRequest.setFare(fare);
         RideRequest savedRideRequest = rideRequestRepository.save(rideRequest);
-        driverMatchingStrategy.findMatchingDrivers(rideRequest);
+        List<Driver> drivers = rideStrategyManager.driverMatchingStrategy(rider.getRating()).findMatchingDrivers(rideRequest);
+        // TODO : Send notification to all the drivers about this ride request
         return modelMapper.map(savedRideRequest, RideRequestDto.class);
     }
 
@@ -69,4 +72,12 @@ public class RiderServiceImpl implements RiderService {
                 .build();
         return riderRepository.save(rider);
     }
+
+    public Rider getCurrentRider() {
+//        TODO : implement Spring security
+        return riderRepository.findById(1L).orElseThrow(() -> new ResourceNotFoundException(
+                "Rider not found with id: "+1
+        ));
+    }
+
 }
