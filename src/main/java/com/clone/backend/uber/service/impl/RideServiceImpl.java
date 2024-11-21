@@ -1,6 +1,7 @@
 package com.clone.backend.uber.service.impl;
 
 import com.clone.backend.uber.entity.RideRequest;
+import com.clone.backend.uber.exception.ResourceNotFoundException;
 import com.clone.backend.uber.model.RideRequestDto;
 import com.clone.backend.uber.entity.Driver;
 import com.clone.backend.uber.entity.Ride;
@@ -26,7 +27,8 @@ public class RideServiceImpl implements RideService {
 
     @Override
     public Ride getRideById(Long rideId) {
-        return null;
+        return rideRepository.findById(rideId).orElseThrow(() ->
+                new ResourceNotFoundException(String.format("Ride not found with id %s", rideId)));
     }
 
     @Override
@@ -37,6 +39,7 @@ public class RideServiceImpl implements RideService {
     @Override
     public Ride createNewRide(RideRequest rideRequest, Driver driver) {
         Ride ride = modelMapper.map(rideRequest, Ride.class);
+        ride.setRideStatus(RideStatus.CONFIRMED);
         ride.setDriver(driver);
         ride.setOtp(generateOTP());
         rideRequestService.saveRideRequestToRepository(rideRequest);
@@ -44,8 +47,9 @@ public class RideServiceImpl implements RideService {
     }
 
     @Override
-    public Ride updateRideStatus(Long rideId, RideStatus rideStatus) {
-        return null;
+    public Ride updateRideStatus(Ride ride, RideStatus rideStatus) {
+        ride.setRideStatus(rideStatus);
+        return rideRepository.save(ride);
     }
 
     @Override
