@@ -31,10 +31,10 @@ public class DistanceServiceImpl implements DistanceService {
     }
 
     @Data
-    static class OsrmResponseDto {
+    private static class OsrmResponseDto {
         private List<OsrmRoute> routes;
         @Data
-        static class OsrmRoute {
+        private static class OsrmRoute {
             private Double distance;
         }
     }
