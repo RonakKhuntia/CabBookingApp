@@ -1,5 +1,6 @@
 package com.clone.backend.uber.service;
 
+import com.clone.backend.uber.entity.RideRequest;
 import com.clone.backend.uber.model.RideRequestDto;
 import com.clone.backend.uber.entity.Driver;
 import com.clone.backend.uber.entity.Ride;
@@ -12,7 +13,7 @@ public interface RideService {
 
     void matchWithDrivers(RideRequestDto rideRequestDto);
 
-    Ride createNewRide(RideRequestDto rideRequestDto, Driver driver);
+    Ride createNewRide(RideRequest rideRequest, Driver driver);
 
     Ride updateRideStatus(Long rideId, RideStatus rideStatus);
 
