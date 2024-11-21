@@ -74,9 +74,9 @@ public class RiderServiceImpl implements RiderService {
     }
 
     public Rider getCurrentRider() {
-//        TODO : implement Spring security
+        // TODO : implement Spring security
         return riderRepository.findById(1L).orElseThrow(() -> new ResourceNotFoundException(
-                "Rider not found with id: "+1
+                String.format("Rider not found with id: %s", 1)
         ));
     }
 
