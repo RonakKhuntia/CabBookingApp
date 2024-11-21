@@ -1,6 +1,6 @@
 package com.clone.backend.uber.config;
 
-import com.clone.backend.uber.dto.PointDto;
+import com.clone.backend.uber.model.PointDto;
 import com.clone.backend.uber.utils.GeometryUtil;
 import org.locationtech.jts.geom.Point;
 import org.modelmapper.ModelMapper;

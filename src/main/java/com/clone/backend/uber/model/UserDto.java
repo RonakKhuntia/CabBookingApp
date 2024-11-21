@@ -1,4 +1,4 @@
-package com.clone.backend.uber.dto;
+package com.clone.backend.uber.model;
 
 import com.clone.backend.uber.enums.Role;
 import lombok.AllArgsConstructor;

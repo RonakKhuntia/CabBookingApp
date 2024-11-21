@@ -1,4 +1,4 @@
-package com.clone.backend.uber.dto;
+package com.clone.backend.uber.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

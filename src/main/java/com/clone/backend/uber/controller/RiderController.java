@@ -1,6 +1,6 @@
 package com.clone.backend.uber.controller;
 
-import com.clone.backend.uber.dto.RideRequestDto;
+import com.clone.backend.uber.model.RideRequestDto;
 import com.clone.backend.uber.service.RiderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
