@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@Primary
 @RequiredArgsConstructor
 public class DriverMatchingNearestDriverStrategy implements DriverMatchingStrategy {
 

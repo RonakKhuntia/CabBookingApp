@@ -4,11 +4,9 @@ import com.clone.backend.uber.entity.RideRequest;
 import com.clone.backend.uber.service.DistanceService;
 import com.clone.backend.uber.strategy.RideFareCalculationStrategy;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 @Service
-@Primary
 @RequiredArgsConstructor
 public class RideFareDefaultFareCalculationStrategy implements RideFareCalculationStrategy {
 
