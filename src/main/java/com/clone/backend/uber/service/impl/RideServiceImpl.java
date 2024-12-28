@@ -1,6 +1,7 @@
 package com.clone.backend.uber.service.impl;
 
 import com.clone.backend.uber.entity.RideRequest;
+import com.clone.backend.uber.entity.Rider;
 import com.clone.backend.uber.exception.ResourceNotFoundException;
 import com.clone.backend.uber.model.RideRequestDto;
 import com.clone.backend.uber.entity.Driver;
@@ -53,13 +54,13 @@ public class RideServiceImpl implements RideService {
     }
 
     @Override
-    public Page<Ride> getAllRidesOfRider(Long riderId, PageRequest pageRequest) {
-        return null;
+    public Page<Ride> getAllRidesOfRider(Rider rider, PageRequest pageRequest) {
+        return rideRepository.findByRider(rider, pageRequest);
     }
 
     @Override
-    public Page<Ride> getAllRideOfDriver(Long driverId, PageRequest pageRequest) {
-        return null;
+    public Page<Ride> getAllRidesOfDriver(Driver driver, PageRequest pageRequest) {
+        return rideRepository.findByDriver(driver, pageRequest);
     }
 
     private String generateOTP() {

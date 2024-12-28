@@ -1,6 +1,7 @@
 package com.clone.backend.uber.service;
 
 import com.clone.backend.uber.entity.RideRequest;
+import com.clone.backend.uber.entity.Rider;
 import com.clone.backend.uber.model.RideRequestDto;
 import com.clone.backend.uber.entity.Driver;
 import com.clone.backend.uber.entity.Ride;
@@ -17,7 +18,7 @@ public interface RideService {
 
     Ride updateRideStatus(Ride ride, RideStatus rideStatus);
 
-    Page<Ride> getAllRidesOfRider(Long riderId, PageRequest pageRequest);
+    Page<Ride> getAllRidesOfRider(Rider rider, PageRequest pageRequest);
 
-    Page<Ride> getAllRideOfDriver(Long driverId, PageRequest pageRequest);
+    Page<Ride> getAllRidesOfDriver(Driver driver, PageRequest pageRequest);
 }
