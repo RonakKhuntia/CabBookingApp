@@ -11,6 +11,7 @@ import com.clone.backend.uber.model.RideDto;
 import com.clone.backend.uber.model.RiderDto;
 import com.clone.backend.uber.repository.DriverRepository;
 import com.clone.backend.uber.service.DriverService;
+import com.clone.backend.uber.service.PaymentService;
 import com.clone.backend.uber.service.RideRequestService;
 import com.clone.backend.uber.service.RideService;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +33,7 @@ public class DriverServiceImpl implements DriverService {
     private final RideRequestService rideRequestService;
     private final RideService rideService;
     private final ModelMapper modelMapper;
+    private final PaymentService paymentService;
 
     @Override
     @Transactional
@@ -81,12 +83,26 @@ public class DriverServiceImpl implements DriverService {
         }
         ride.setStartedAt(LocalDateTime.now());
         Ride savedRide = rideService.updateRideStatus(ride, RideStatus.ONGOING);
+        paymentService.createNewPayment(savedRide);
         return modelMapper.map(savedRide, RideDto.class);
     }
 
     @Override
+    @Transactional
     public RideDto endRide(Long rideId) {
-        return null;
+        Ride ride = rideService.getRideById(rideId);
+        Driver driver = getCurrentDriver();
+        if (!driver.equals(ride.getDriver())) {
+            throw new RuntimeException("Driver cannot start a ride as he had not accepted it earlier");
+        }
+        if (!ride.getRideStatus().equals(RideStatus.ONGOING)) {
+            throw new RuntimeException(String.format("Ride cannot be ended as status is %s", ride.getRideStatus()));
+        }
+        ride.setEndedAt(LocalDateTime.now());
+        Ride savedRide = rideService.updateRideStatus(ride, RideStatus.ENDED);
+        updateDriverAvailability(driver, true);
+        paymentService.processPayment(ride);
+        return modelMapper.map(savedRide, RideDto.class);
     }
 
     @Override
