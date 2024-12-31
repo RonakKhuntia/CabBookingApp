@@ -11,6 +11,7 @@ import com.clone.backend.uber.enums.RideRequestStatus;
 import com.clone.backend.uber.repository.RideRequestRepository;
 import com.clone.backend.uber.repository.RiderRepository;
 import com.clone.backend.uber.service.DriverService;
+import com.clone.backend.uber.service.RatingService;
 import com.clone.backend.uber.service.RideService;
 import com.clone.backend.uber.service.RiderService;
 import com.clone.backend.uber.strategy.RideStrategyManager;
@@ -33,6 +34,7 @@ public class RiderServiceImpl implements RiderService {
     private final RiderRepository riderRepository;
     private final DriverService driverService;
     private final RideService rideService;
+    private final RatingService ratingService;
 
     @Override
     @Transactional
@@ -66,7 +68,15 @@ public class RiderServiceImpl implements RiderService {
 
     @Override
     public DriverDto rateDriver(Long rideId, Integer rating) {
-        return null;
+        Ride ride = rideService.getRideById(rideId);
+        Rider rider = getCurrentRider();
+        if (!rider.equals(ride.getRider())) {
+            throw new RuntimeException("Rider is not the owner of this ride");
+        }
+        if (!ride.getRideStatus().equals(RideStatus.ENDED)) {
+            throw new RuntimeException("Ride status is not ended hence cannot give rating, status : " + ride.getRideStatus());
+        }
+        return ratingService.rateDriver(ride, rating);
     }
 
     @Override
