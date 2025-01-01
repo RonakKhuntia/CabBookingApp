@@ -56,6 +56,7 @@ public class WalletServiceImpl implements WalletService {
     public Wallet createNewWallet(User user) {
         Wallet wallet = new Wallet();
         wallet.setUser(user);
+        wallet.setBalance(0.0);
         return walletRepository.save(wallet);
     }
 
