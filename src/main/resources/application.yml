@@ -9,8 +9,16 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     show-sql: true
     properties:
       hibernate:
         format_sql: true
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:data.sql
+
+jwt:
+ secretKey: paiosdfqg43j51b4hjbhcafifa87dsf6hk32jhkrj9a7dfhkjhalkasdf97823
