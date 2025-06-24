@@ -52,7 +52,3 @@ The application features:
         * `/drivers/accept-ride` - Accept a ride request
     * **Payments:**
         * `/payments/process` - Process payments for completed rides
-
-### Contributions
-
-Contributions are welcome! Please open an issue or pull request for any bug fixes, feature additions, or improvements.
