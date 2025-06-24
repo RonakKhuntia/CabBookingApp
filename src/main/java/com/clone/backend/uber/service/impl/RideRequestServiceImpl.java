@@ -26,4 +26,5 @@ public class RideRequestServiceImpl implements RideRequestService {
         findRideRequestById(rideRequest.getId());
         rideRequestRepository.save(rideRequest);
     }
+
 }

@@ -25,12 +25,11 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     private final JwtService jwtService;
     private final UserService userService;
 
-    @Autowired
     @Qualifier("handlerExceptionResolver")
-    private HandlerExceptionResolver handlerExceptionResolver;
+    private final HandlerExceptionResolver handlerExceptionResolver;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) {
 
         try {
             final String requestTokenHeader = request.getHeader("Authorization");
@@ -55,6 +54,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         } catch (Exception ex) {
             handlerExceptionResolver.resolveException(request, response, null, ex);
         }
+
     }
 
 }
