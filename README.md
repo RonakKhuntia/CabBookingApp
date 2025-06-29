@@ -15,40 +15,15 @@ The application features:
 * **Surge Pricing:** Dynamically adjusts ride fares based on demand.
 * **Driver Matching:** Matches riders with available drivers using strategies like nearest driver or highest-rated driver.
 
-### Installation
-
-1. **Prerequisites:**
-    * Java Development Kit (JDK) 22 
-    * Maven 3.6.3 or higher
-2. **Clone the repository:**
-    ```bash
-    git clone https://github.com/RonakKhuntia/CabBookingApp
-    ```
-3. **Navigate to the project directory:**
-    ```bash
-    cd CabBookingApp
-    ```
-4. **Build the project:**
-    ```bash
-    mvn clean install
-    ```
-
-### Usage
-
-1. **Start the application:**
-    ```bash
-    mvn spring-boot:run
-    ```
-2. **Access the API:**
-    The application exposes REST APIs for interacting with various functionalities. Refer to the API documentation for endpoints and request parameters.
-    * **Authentication:**
-        * `/auth/signup` - Register a new user
-        * `/auth/login` - Login with existing credentials
-    * **Riders:**
-        * `/riders/request-ride` - Request a new ride
-        * `/riders/track-ride` - Track the assigned driver
-    * **Drivers:**
-        * `/drivers/onboard` - Onboard as a driver
-        * `/drivers/accept-ride` - Accept a ride request
-    * **Payments:**
-        * `/payments/process` - Process payments for completed rides
+ The application exposes REST APIs for interacting with various functionalities. Refer to the API documentation for endpoints and request parameters.
+ * **Authentication:**
+     * `/auth/signup` - Register a new user
+     * `/auth/login` - Login with existing credentials
+ * **Riders:**
+     * `/riders/request-ride` - Request a new ride
+     * `/riders/track-ride` - Track the assigned driver
+ * **Drivers:**
+     * `/drivers/onboard` - Onboard as a driver
+     * `/drivers/accept-ride` - Accept a ride request
+ * **Payments:**
+     * `/payments/process` - Process payments for completed rides
